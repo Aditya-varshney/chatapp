@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Real-time Chat Application
+
+A modern real-time chat application built with Next.js, Socket.io, and Tailwind CSS.
+
+## Features
+
+- Real-time messaging with Socket.io
+- User authentication
+- Chat rooms
+- Typing indicators
+- Responsive design (mobile & desktop)
+- Dark mode support
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ or 20+
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+3. Create `.env.local` file based on `.env.example`
+
+### Development
+
+You can run the app in two ways:
+
+#### Standard Development Server
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This uses the mock socket implementation for local development.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+#### Development Server with Real-time Socket Support
+```bash
+npm run dev:server
+# or
+yarn dev:server
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This runs a custom server that handles both Next.js and Socket.io, providing better multi-user real-time communication during development.
 
-## Learn More
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-To learn more about Next.js, take a look at the following resources:
+### Multi-User Chat Testing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For testing with multiple users:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Development Mode with Mock Socket**:
+   - The mock implementation uses localStorage to share data between browser tabs
+   - Open the app in multiple tabs or browsers to simulate different users
+   - Each browser will need to log in with a different user account
 
-## Deploy on Vercel
+2. **Real Socket.io Server (Recommended for Multi-User Testing)**:
+   ```bash
+   npm run dev:server
+   # or
+   yarn dev:server
+   ```
+   - This runs a real Socket.io server for proper real-time communication
+   - Works across different browsers and devices on your local network
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> Note: The message "This is a development mock. No real server connection" indicates you're running in mock mode, not with the real Socket.io server.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - React framework with App Router
+- [Socket.io](https://socket.io/) - Real-time communication
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Geist Font](https://vercel.com/font) - Modern font family from Vercel
+
+## Deployment
+
+This application can be deployed on [Vercel](https://vercel.com/), [Netlify](https://www.netlify.com/), or any platform that supports Next.js applications.
